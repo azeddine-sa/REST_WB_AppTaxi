@@ -6,6 +6,7 @@ import be.azsa.apptaxi.repository.UserRepository;
 import be.azsa.apptaxi.service.UserService;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,16 @@ public class UserServiceImpl implements UserService {
             return user.get();
         } else{
             throw new ResourceNotFoundException("User", "Id", id);
+        }
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()){
+            return user.get();
+        } else{
+            throw new ResourceNotFoundException("User", "Email", email);
         }
     }
 

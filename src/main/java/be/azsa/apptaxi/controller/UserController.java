@@ -32,9 +32,16 @@ public class UserController {
 
     //build get user by email REST API
     //localhost:8080/api/users/1
-    @GetMapping("{id}")
+    @GetMapping("{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
+        return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
+    }
+
+    //build get user by id REST API
+    //localhost:8080/api/users/1
+    @GetMapping("/byId/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long idUser){
-        return new ResponseEntity<>(userService.getUserById(idUser), HttpStatus.OK);
+       return new ResponseEntity<>(userService.getUserById(idUser), HttpStatus.OK);
     }
 
     //build update user REST API
