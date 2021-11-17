@@ -17,4 +17,8 @@ public class Driver {
     private String lastname;
     @Column(name = "password", nullable = false)
     private int password;
+    @Column(name = "email", nullable = false)
+    private String email;
+    @Column(name = "phone", nullable = false)
+    private String phone;
 }
