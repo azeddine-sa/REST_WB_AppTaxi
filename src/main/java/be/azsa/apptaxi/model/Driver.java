@@ -15,6 +15,8 @@ public class Driver {
     private String firstname;
     @Column(name = "lastname", nullable = false)
     private String lastname;
+    @Column(name = "driver_number", nullable = false)
+    private int driverNum;
     @Column(name = "password", nullable = false)
     private int password;
     @Column(name = "email", nullable = false, unique = true)
