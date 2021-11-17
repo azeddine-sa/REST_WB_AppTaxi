@@ -20,9 +20,9 @@ public class User {
     private String lastname;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, unique = true)
     private String password;
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
 }
