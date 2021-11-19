@@ -12,7 +12,6 @@ public interface HistoryOrderService {
     List<HistoryOrder> getAllHistoryOrder();
     List<HistoryOrder> getAllHistoryOrderByDriver(long idDriver);
     List<HistoryOrder> getAllHistoryOrderByCar(long idCar);
-    List<HistoryOrder> getAllHistoryOrderByUser(long userId);
 
     //PUT
     HistoryOrder updateHistoryOrder(HistoryOrder historyOrder, long idHistoryOrder);

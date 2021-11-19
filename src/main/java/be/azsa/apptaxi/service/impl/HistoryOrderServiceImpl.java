@@ -26,8 +26,6 @@ public class HistoryOrderServiceImpl implements HistoryOrderService {
     public List<HistoryOrder> getAllHistoryOrderByCar(long idCar) {
         return historyOrderRepository.findByCar(idCar);
     }
-    @Override
-    public List<HistoryOrder> getAllHistoryOrderByUser(long userId) { return historyOrderRepository.findByUser(userId); }
 
     @Override
     public HistoryOrder updateHistoryOrder(HistoryOrder historyOrder, long idHistoryOrder) {

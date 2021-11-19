@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "order_history")
+@Table(name = "history_order")
 public class HistoryOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
