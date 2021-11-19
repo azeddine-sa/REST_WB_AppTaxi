@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "order_history")
-public class OrderHistory {
+public class HistoryOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long idHistory;
     @OneToOne
     @JoinColumn(name = "order_id")
     private Order order;
