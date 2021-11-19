@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class UserController {
 
     private UserService userService;
@@ -18,41 +18,45 @@ public class UserController {
         this.userService = userService;
     }
 
-    // build create employee REST API
-    @PostMapping
+    //POST
+    // build create user REST API
+    @PostMapping("user/add")
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
+    //GET
     //build get all users REST API
-    @GetMapping()
+    @GetMapping("users")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
+    //build get user by id REST API
+    //localhost:8080/api/users/1
+    @GetMapping("user/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") long idUser){
+        return new ResponseEntity<>(userService.getUserById(idUser), HttpStatus.OK);
+    }
+
     //build get user by email REST API
     //localhost:8080/api/users/1
-    @GetMapping("{email}")
+    @GetMapping("/user/bymail/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
         return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
     }
 
-    //build get user by id REST API
-    //localhost:8080/api/users/1
-    @GetMapping("/byId/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") long idUser){
-       return new ResponseEntity<>(userService.getUserById(idUser), HttpStatus.OK);
-    }
-
+    //PUT
     //build update user REST API
     //localhost:8080/api/users/1
-    @PutMapping("{id}")
+    @PutMapping("user/{id}/edit")
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user){
         return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
     }
 
+    //DELETE
     //build deleter user REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("user/{id}/delete")
     public ResponseEntity<String> deleteUser(@PathVariable("id") long id){
         userService.deleteUser(id);
 
