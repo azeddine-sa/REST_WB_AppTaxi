@@ -3,7 +3,9 @@ package be.azsa.apptaxi.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,7 +22,14 @@ public class Order {
     private Date datetime;
     @Column(name = "informations")
     private String infos;
+    //@Enumerated(EnumType.STRING)
+    //private Status status;
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "idUser")
     private User user;
+    /*
+    public enum Status{
+        SENT, IN_PROGRESS, DONE, CANCELED;
+    }
+     */
 }

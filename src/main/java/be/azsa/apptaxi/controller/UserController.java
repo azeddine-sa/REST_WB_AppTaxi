@@ -2,8 +2,11 @@ package be.azsa.apptaxi.controller;
 
 import be.azsa.apptaxi.model.User;
 import be.azsa.apptaxi.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +17,9 @@ public class UserController {
 
     private UserService userService;
 
+    @Autowired
+    public JavaMailSender emailSender;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -22,6 +28,18 @@ public class UserController {
     // build create user REST API
     @PostMapping("user/add")
     public ResponseEntity<User> saveUser(@RequestBody User user){
+
+        // Create a Simple MailMessage.
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(user.getEmail());
+        message.setSubject("Confirmation d'inscription à AzTaxi");
+        message.setText("Vous avez reçu ce courriel parque vous vous êtes récemment inscrit sur notre Application Taxi. Merci");
+
+        // Send Message!
+        this.emailSender.send(message);
+
+
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
@@ -36,11 +54,12 @@ public class UserController {
     //localhost:8080/api/users/1
     @GetMapping("user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long idUser){
+
         return new ResponseEntity<>(userService.getUserById(idUser), HttpStatus.OK);
     }
 
     //build get user by email REST API
-    //localhost:8080/api/users/1
+    //localhost:8080/api/users/saouti.azeddine@gmail.com
     @GetMapping("/user/bymail/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
         return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);

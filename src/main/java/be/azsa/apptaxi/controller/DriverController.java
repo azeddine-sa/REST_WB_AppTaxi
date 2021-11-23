@@ -1,6 +1,7 @@
 package be.azsa.apptaxi.controller;
 
 import be.azsa.apptaxi.model.Driver;
+import be.azsa.apptaxi.model.User;
 import be.azsa.apptaxi.service.DriverService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +31,18 @@ public class DriverController {
         return driverService.getAllDrivers();
     }
 
-    //build get user by id REST API
+    //build get driver by id REST API
     //localhost:8080/api/drivers/1
     @GetMapping("driver/{id}")
     public ResponseEntity<Driver> getDriverById(@PathVariable("id") long idDriver){
         return new ResponseEntity<>(driverService.getDriverById(idDriver), HttpStatus.OK);
+    }
+
+    //build get driver by drivernum REST API
+    //localhost:8080/api/byDriverNum/1333
+    @GetMapping("/driver/byDriverNum/{driverNum}")
+    public ResponseEntity<Driver> getUserByDriverNum(@PathVariable("driverNum") int driverNum){
+        return new ResponseEntity<>(driverService.getDriverByDriverNum(driverNum), HttpStatus.OK);
     }
 
     //PUT

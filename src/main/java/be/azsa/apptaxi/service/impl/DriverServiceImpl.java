@@ -40,6 +40,16 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public Driver getDriverByDriverNum(int driverNum) {
+        Optional<Driver> driver = driverRepository.findByDriverNum(driverNum);
+        if(driver.isPresent()){
+            return driver.get();
+        } else{
+            throw new ResourceNotFoundException("Driver", "Driver Num", driverNum);
+        }
+    }
+
+    @Override
     public Driver updateDriver(Driver driver, long id) {
         Driver existingDriver = driverRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Driver", "Id", id));

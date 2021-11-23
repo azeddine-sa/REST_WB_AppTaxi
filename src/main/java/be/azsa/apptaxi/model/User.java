@@ -18,9 +18,9 @@ public class User {
     private String firstname;
     @Column(name = "lastname", nullable = false)
     private String lastname;
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column(name = "password", nullable = false, unique = true)
+    @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;

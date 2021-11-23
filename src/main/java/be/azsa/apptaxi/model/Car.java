@@ -15,5 +15,7 @@ public class Car {
     private String brand;
     @Column(name = "model", nullable = false)
     private String model;
+    @Column(name = "license_plate", nullable = false)
+    private String licensePlate;
     //private String List<Criteria> criterias;
 }
