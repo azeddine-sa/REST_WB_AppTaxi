@@ -12,12 +12,12 @@ public class HistoryOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idHistory;
     @OneToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id", nullable = false)
     private Order order;
     @OneToOne
-    @JoinColumn(name = "car_id")
+    @JoinColumn(name = "car_id", nullable = false)
     private Car car;
     @OneToOne
-    @JoinColumn(name = "driver_id")
+    @JoinColumn(name = "driver_id",nullable = false)
     private Driver driver;
 }
