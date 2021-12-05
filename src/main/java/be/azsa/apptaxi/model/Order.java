@@ -3,6 +3,7 @@ package be.azsa.apptaxi.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,4 +33,13 @@ public class Order {
         SENT, IN_PROGRESS, DONE, CANCELED;
     }
      */
+
+    public Order(long idOrder, String departure, String arrival, User user) {
+        Timestamp tt = new Timestamp(System.currentTimeMillis());
+        this.idOrder = idOrder;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.datetime = tt;
+        this.user = user;
+    }
 }

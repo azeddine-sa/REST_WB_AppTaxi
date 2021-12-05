@@ -25,4 +25,7 @@ public class User {
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
+
+
+
 }
