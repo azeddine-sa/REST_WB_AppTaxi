@@ -2,6 +2,7 @@ package be.azsa.apptaxi.service.impl;
 
 import be.azsa.apptaxi.exception.ResourceNotFoundException;
 import be.azsa.apptaxi.model.Order;
+import be.azsa.apptaxi.model.User;
 import be.azsa.apptaxi.repository.OrderRepository;
 import be.azsa.apptaxi.service.OrderService;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,11 @@ public class OrderServiceImpl implements OrderService {
     public Order getOrderByDatetime(Date datetime) {
         return orderRepository.findByDatetime(datetime).orElseThrow(
                 ()-> new ResourceNotFoundException("Order", "Datetime", datetime));
+    }
+
+    @Override
+    public List<Order> getAllUserOrders(User user) {
+        return orderRepository.findByUser(user);
     }
 
     @Override

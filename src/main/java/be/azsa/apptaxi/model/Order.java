@@ -34,6 +34,8 @@ public class Order {
     }
      */
 
+    public Order(){}
+
     public Order(long idOrder, String departure, String arrival, User user) {
         Timestamp tt = new Timestamp(System.currentTimeMillis());
         this.idOrder = idOrder;

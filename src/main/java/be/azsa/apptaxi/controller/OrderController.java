@@ -1,6 +1,7 @@
 package be.azsa.apptaxi.controller;
 
 import be.azsa.apptaxi.model.Order;
+import be.azsa.apptaxi.model.User;
 import be.azsa.apptaxi.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,12 @@ public class OrderController {
     @GetMapping("order/date/{datetime}")
     public ResponseEntity<Order> getOrderByDatetime(@PathVariable("datetime") Date datetime){
         return new ResponseEntity<>(orderService.getOrderByDatetime(datetime), HttpStatus.OK);
+    }
+
+    //build get order by User
+    @GetMapping("order/user")
+    public List<Order> getOrderByUser (@RequestBody User user){
+        return orderService.getAllUserOrders(user);
     }
 
     //PUT
