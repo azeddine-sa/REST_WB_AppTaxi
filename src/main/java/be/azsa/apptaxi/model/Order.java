@@ -23,25 +23,10 @@ public class Order {
     private Date datetime;
     @Column(name = "informations")
     private String infos;
-    //@Enumerated(EnumType.STRING)
-    //private Status status;
+    @Column(name = "status", nullable = false)
+    private String status;
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "idUser")
     private User user;
-    /*
-    public enum Status{
-        SENT, IN_PROGRESS, DONE, CANCELED;
-    }
-     */
 
-    public Order(){}
-
-    public Order(long idOrder, String departure, String arrival, User user) {
-        Timestamp tt = new Timestamp(System.currentTimeMillis());
-        this.idOrder = idOrder;
-        this.departure = departure;
-        this.arrival = arrival;
-        this.datetime = tt;
-        this.user = user;
-    }
 }

@@ -51,6 +51,7 @@ public class OrderServiceImpl implements OrderService {
         existingOrder.setArrival(order.getArrival());
         existingOrder.setDatetime(order.getDatetime());
         existingOrder.setInfos(order.getInfos());
+        existingOrder.setStatus(order.getStatus());
 
         //save existing order to DB
         orderRepository.save(existingOrder);
